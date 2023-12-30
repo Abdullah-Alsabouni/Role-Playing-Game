@@ -1,7 +1,7 @@
 let xp = 0;
 let health = 100;
 let gold = 50;
-let currentWeapon = 0; // camelCase: JavaScript'te currentWeapon gibi bir cümle ilk kelimesi küçük harfle başlayıp ikinci kelimesi büyük harfle başlayan değişken tanımına camelCase denir
+let currentWeapon = 0;
 let fighting;
 let monsterHealth;
 let inventory = ["stick"];
@@ -15,6 +15,66 @@ const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
-const monsterHealthText =document.querySelector("#monsterHealth");
+const monsterHealthText = document.querySelector("#monsterHealth");
+
+const locations = [
+    {
+        name: "town square",
+        "button text": ["Go to store", "Go to cave", "Fight dragon"],
+        "button functions": [goStore, goCave, fightDragon],
+        text: "You are in the town square. You see a sign that says \"Store\"."
+    },
+    {
+      name: "store",
+      "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)","Go to town square"],
+      "button functions": [buyHealth, buyWeapon, goTown],
+      text: "You enter the store."
+    }
+    
+      
+];
+
 // initialize buttons
-button1.onclick = goStore; // onclick Event: button1'e tıklandığnda......... işlemini yap
+button1.onclick = goStore;
+button2.onclick = goCave;
+button3.onclick = fightDragon;
+
+function update(location) {
+
+}
+
+function goTown() {// 1.buttonun 3.buttonu ==> 2 defa üst üste basıldığında....
+  button1.innerText = "Go to store";
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore; // 2 defa üst üste basıldığında ==> fonksiyonların ilk haline dön
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+}
+
+function goStore() { // 1.Button fonksiyonu
+  button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+  button1.onclick = buyHealth; // 1.buttonun 1.buttonu
+  button2.onclick = buyWeapon; // 1.buttonun 2.buttonu
+  button3.onclick = goTown; // 1.buttonun 3.buttonu
+  text.innerText = "You enter the store.";
+}
+
+function goCave() { // 2.button fonksiyonu
+  console.log("Going to cave.");
+}
+
+function fightDragon() { // 3.button fonksiyonu
+  console.log("Fighting dragon.");
+}
+
+function buyHealth() {
+
+}
+
+function buyWeapon() {
+
+}

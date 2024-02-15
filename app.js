@@ -17,23 +17,25 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
-const locations = [
+const locations = [ 
     {
-        name: "town square",
-        "button text": ["Go to store", "Go to cave", "Fight dragon"],
-        "button functions": [goStore, goCave, fightDragon],
-        text: "You are in the town square. You see a sign that says \"Store\"."
+        // Oyun açkıldığında görünen ilk konum
+        name: "town square", // ilk konumun ismi
+        "button text": ["Go to store", "Go to cave", "Fight dragon"], //  İlk konumun butonları
+        "button functions": [goStore, goCave, fightDragon], // İlk konumun butonları
+        text: "You are in the town square. You see a sign that says \"Store\"." // İlk konumun görünen mesajı
     },
     {
-      name: "store",
-      "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)","Go to town square"],
+        // ilk konumdaki "Go to store" butonuna tıklandığında görünen "store" konumu
+      name: "store", 
+      "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)","Go to town square"],  
       "button functions": [buyHealth, buyWeapon, goTown],
       text: "You enter the store."
     }
     
       
 ];
-
+// ilk konumun butonları
 // initialize buttons
 button1.onclick = goStore;
 button2.onclick = goCave;
@@ -43,7 +45,7 @@ function update(location) {
 
 }
 
-function goTown() {// 1.buttonun 3.buttonu ==> 2 defa üst üste basıldığında....
+function goTown() { // store ve cave konumlarından ilk konuma dönme fonksiyonu 
   button1.innerText = "Go to store";
   button2.innerText = "Go to cave";
   button3.innerText = "Fight dragon";
@@ -53,21 +55,21 @@ function goTown() {// 1.buttonun 3.buttonu ==> 2 defa üst üste basıldığınd
   text.innerText = "You are in the town square. You see a sign that says \"Store\".";
 }
 
-function goStore() { // 1.Button fonksiyonu
+function goStore() { // "store" konumuna gitme fonksiyonu
   button1.innerText = "Buy 10 health (10 gold)";
   button2.innerText = "Buy weapon (30 gold)";
   button3.innerText = "Go to town square";
-  button1.onclick = buyHealth; // 1.buttonun 1.buttonu
-  button2.onclick = buyWeapon; // 1.buttonun 2.buttonu
-  button3.onclick = goTown; // 1.buttonun 3.buttonu
+  button1.onclick = buyHealth; 
+  button2.onclick = buyWeapon; 
+  button3.onclick = goTown; 
   text.innerText = "You enter the store.";
 }
 
-function goCave() { // 2.button fonksiyonu
+function goCave() { // "cave" konumuna gitme fonksiyonu 
   console.log("Going to cave.");
 }
 
-function fightDragon() { // 3.button fonksiyonu
+function fightDragon() { 
   console.log("Fighting dragon.");
 }
 
